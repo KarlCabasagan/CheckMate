@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/login-register.css">
     <link rel="icon" href="images/logo-icon.png">
-    <title>CheckMate - Login or sign up</title>
+    <title>CheckMate - Login</title>
 </head>
 <body>
     <div class="container">
@@ -14,23 +14,40 @@
             <img id="logo" src="images/checkMate.png" alt="logo">
         </div>
         <div class="login-form-wrapper">
-            <form id="login-form" action="index.html">
+            <div id="error-message" style="color: red; display: none;"></div>
+
+            <form id="login-form" method="POST" action="/data-handling/login.php">
                 <div>
                     <span>Email</span>
-                    <input type="email" name="email-input" id="email-input">
+                    <input type="email" name="email" id="email-input" required>
                 </div>
                 <div>
                     <span>Password</span>
-                    <input type="password" name="password-input" id="password-input">
+                    <input type="password" name="password" id="password-input" required>
                 </div>
                 <div class="login-button-wrapper">
-                    <button id="login-button">Login</button>
+                    <button type="submit" id="login-button">Login</button>
                 </div>
             </form>
             <div class="sign-up-wrapper">
-                <span id="sign-up">Don't Have an account? <a href="register.html"> Sign up </a> now</span>
+                <span id="sign-up">Don't have an account? <a href="register.html"> Sign up </a> now</span>
             </div>
         </div>
     </div>
+
+    <script>
+        // Display error message if passed via URL query
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const errorMessage = getQueryParam('error');
+        if (errorMessage) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = decodeURIComponent(errorMessage);
+            errorDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
