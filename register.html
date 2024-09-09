@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/login-register.css">
     <link rel="icon" href="images/logo-icon.png">
-    <title>CheckMate - Login or sign up</title>
+    <title>CheckMate - Register</title>
 </head>
 <body>
     <div class="container">
@@ -14,31 +14,47 @@
             <img id="logo" src="images/checkMate.png" alt="logo">
         </div>
         <div class="login-form-wrapper">
-            <form id="login-form" action="index.html">
+            <div id="error-message" style="color: red; display: none;"></div>
+            <form id="register-form" method="POST" action="data-handling/register.php">
                 <div>
                     <span>Email</span>
-                    <input type="email" name="email-input" id="email-input">
+                    <input type="email" name="email" id="email-input" required>
                 </div>
                 <div>
                     <span>Username</span>
-                    <input type="username" name="username-input" id="username-input">
+                    <input type="text" name="username" id="username-input" required>
                 </div>
                 <div>
                     <span>Password</span>
-                    <input type="password" name="password-input" id="password-input">
+                    <input type="password" name="password" id="password-input" required>
                 </div>
                 <div>
                     <span>Confirm Password</span>
-                    <input type="password" name="password-input" id="password-input">
+                    <input type="password" name="confirm_password" id="confirm-password-input" required>
                 </div>
                 <div class="login-button-wrapper">
-                    <button id="login-button">Register</button>
+                    <button type="submit" id="register-button">Register</button>
                 </div>
             </form>
             <div class="sign-up-wrapper">
-                <span id="sign-up">Already have an account? <a href="login.html"> Login </a> now</span>
+                <span id="sign-up">Already have an account? <a href="login.html">Login</a> now</span>
             </div>
         </div>
     </div>
+
+    <script>
+        // Error handling in the same way as done in the login form
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const errorMessage = getQueryParam('error');
+        if (errorMessage) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = decodeURIComponent(errorMessage);
+            errorDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
