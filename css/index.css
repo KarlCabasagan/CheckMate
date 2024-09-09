@@ -126,3 +126,10 @@
     background-color: white;
     border-radius: 10px;
 }
+
+.completed-item-wrapper {
+    margin-top: 30px;
+    width: 100%;
+    height: 3rem;
+    background-color: white;
+}
