@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column; 
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+#done-button {
+    font-size: large;
+}
+
+.header-wrapper, .header-left-wrapper {
+    display: flex;
+}
+
+.header-wrapper {
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.header-wrapper .header-left-wrapper, .header-wrapper .done-button-wrapper {
+    margin-top: 10px;
+}
+
+.header-left-wrapper {
+    margin-left: 10px;
+    align-items: center;
+}
+
+.header-left-wrapper .create-new-list-wrapper {
+    margin-left: 10px;
+}
+
+.create-new-list-wrapper span {
+    font-size: x-large;
+}
+
+.done-button-wrapper {
+    margin-right: 10px;
+}
+
+.new-list-form-wrapper {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.new-list-form-wrapper form input {
+    width: 96%;
+    height: 50px;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: large;
+    /* color: #444444; */
+    border: solid #1a414f 3px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.new-list-form-wrapper form input:focus {
+    outline: #1a414f;
+}
