@@ -43,6 +43,27 @@
     white-space: nowrap;
 }
 
+.username-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logo-wrapper {
+    position: absolute;
+    left:50%;
+    margin-left:-20px;
+}
+
+.logout-button {
+    border: none;
+    background-color: transparent;
+    z-index: 800;
+}
+
+.username-wrapper form {
+    height: 100%;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -160,13 +181,17 @@
     background-color: transparent;
 }
 
+#list-name {
+    font-size: larger;
+}
+
 .main-list-wrapper {
     width: 100%;
     margin-top: 5px;
 }
 
-.menu-list {
-    display: flex;
+.main-list-wrapper div {
+    display: none;
     align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -175,8 +200,10 @@
     >input {
         margin-right: 6px;
     }
-    >span {
-        font-size: medium;
+    >a {
+        font-size: large;
+        text-decoration: none;
+        color: #444444;
     }
 }
 

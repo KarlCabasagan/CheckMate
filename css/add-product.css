@@ -1,7 +1,7 @@
 .container {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
+    display: block;
+    height: 100%;
+    width: 100%;
     flex-direction: column;
     align-items: center;
 }
@@ -13,6 +13,8 @@ button {
 
 #done-button {
     font-size: large;
+    font-weight: bold;
+    color: #4f99c4;
 }
 
 .header-wrapper {
@@ -27,7 +29,7 @@ button {
 .header-wrapper {
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .header-wrapper .header-left-wrapper, .header-wrapper .done-button-wrapper {
@@ -52,27 +54,39 @@ button {
 }
 
 .new-product-form-wrapper {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: center;
-    margin-left: -10px;
 }
 
 .new-product-form-wrapper form {
-    width:90%;
+    width: 100%;
 }
 
-.new-product-form-wrapper form input {
-    width: 96%;
-    height: 50px;
-    padding-left: 2%;
-    padding-right: 2%;
+.new-product-form-wrapper form input[type=text],[type=number] {
+    height: 40px;
     font-size: large;
-    /* color: #444444; */
     border: solid #1a414f 3px;
     border-radius: 10px;
     background-color: transparent;
+    padding: 5px;
+    width: 100%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+input[type=file] {
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.price-quantity-wrapper {
+    width: 100%;
     display: flex;
+}
+
+#product-price, #product-quantity {
+    width: 50%;
 }
 
 .new-product-form-wrapper form input:focus {

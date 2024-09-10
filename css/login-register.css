@@ -76,3 +76,53 @@
     text-decoration: none;
     color: #5dadde;
 }
+
+/* register */
+.register-form-wrapper {
+    width: 80%;
+}
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#register-form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+#register-form input {
+    height: 35px;
+    border-radius: 5px;
+    font-size: large;
+    padding-left: 5px;
+    border: none;
+    color: #444444;
+}
+
+#register-form input:focus {
+    outline: none;
+}
+
+#register-form div span {
+    font-size: large;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#register-button {
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+    background-color: #1a414f;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+}
+
+#password-span, #confirm-password-span {
+    color: #444444;
+}
