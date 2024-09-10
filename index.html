@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/index.css">
+    <script type="module" src="js/App.js"></script>
     <link rel="icon" href="images/logo-icon.png">
     <title>CheckMate</title>
 </head>
@@ -41,27 +42,105 @@
                 </div>
             </div>
         </div>
+
+        <div id="list-control-modal" class="modal">
+            <div class="modal-content">
+                <!-- <span class="close">&times;</span>
+                <p>This is the modal content.</p> -->
+            </div>
+        </div>   
+        
+
+        <div class="add-item-wrapper">
+            <form action="add-product.html">
+                <button id="add-item-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M427-428H168v-106h259v-259h106v259h259v106H533v259H427v-259Z"/></svg>
+                </button>
+            </form>
+        </div>
+
         <div class="main-list-container">
             <div class="search-bar-wrapper">
                 <form action="">
-                    <input type="text" id="search-bar-input">
+                    <input type="text" id="search-bar-input" placeholder="Search">
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M787-138 535-390q-30 25-73.5 38.5T379-338q-102.23 0-173.12-70.84-70.88-70.83-70.88-173Q135-684 205.84-755q70.83-71 173-71Q481-826 552-755.12q71 70.89 71 173.12 0 42-13.5 83T572-429l253 253-38 38ZM379-392q81 0 135.5-54.5T569-582q0-81-54.5-135.5T379-772q-81 0-135.5 54.5T189-582q0 81 54.5 135.5T379-392Z"/></svg>
                     </button>
                 </form>
             </div>
-            <div class="main-list-content">
-                
-            </div>
-            <div class="completed-item-wrapper">
-                <div class="completed-item-header-wrapper">
-                    
-                </div>
-                <!-- <div class="completed-item-inner-wrapper">
-                    <div class="completed-item">
-                        
+
+            <div class="group-wrapper">
+                <div class="main-list-content">
+                    <div class="menu-list-inner-content">
+                        <div class="main-list-content-header-wrapper">
+                            <div class="main-list-content-header">
+                                <span>My List</span>
+                                <button id="modal-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="main-list-wrapper">
+                            <div class="menu-list">
+                                <input type="checkbox">
+                                <span>Sample List Item</span>
+                            </div>
+                            <div class="menu-list">
+                                <input type="checkbox">
+                                <span>Sample List Item</span>
+                            </div>
+                            <div class="menu-list">
+                                <input type="checkbox">
+                                <span>Sample List Item</span>
+                            </div>
+                            <div class="menu-list">
+                                <input type="checkbox">
+                                <span>Sample List Item</span>
+                            </div>
+                            <div class="menu-list">
+                                <input type="checkbox">
+                                <span>Sample List Item</span>
+                            </div>
+                            <div class="menu-list">
+                                <input type="checkbox">
+                                <span>Sample List Item</span>
+                            </div>
+                            <div class="menu-list">
+                                <input type="checkbox">
+                                <span>Sample List Item</span>
+                            </div>
+                            <div class="menu-list">
+                                <input type="checkbox">
+                                <span>Sample List Item</span>
+                            </div>
+                        </div>
                     </div>
-                </div> -->
+                </div>
+
+                <div class="completed-item-wrapper">
+                    <div class="completed-item-header-wrapper">
+                        <div class="completed-item-header">
+                            <div class="completed-item-header-left">
+                                <span>Completed</span>
+                            </div>
+                            <div class="completed-item-header-right">
+                                <button class="completed-item-drop-button" id="completed-item-drop-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="completed-item-inner-wrapper" id="completed-item-inner-wrapper">
+                        <div class="completed-item">
+                            <input type="checkbox" checked>
+                            <span>Completeted Item Sample</span>
+                        </div>
+                        <div class="completed-item">
+                            <input type="checkbox" checked>
+                            <span>Completeted Item Sample</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
