@@ -297,6 +297,22 @@
     transition: height 200ms;
     bottom: 0;
     display: flex;
+    justify-content: center;
+}
+
+.modal-option-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 30px;
+}
+
+.modal-option-wrapper a {
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #444444;
+    font-size: larger;
+    /* font-weight: 600; */
 }
 
 .modal.open {
