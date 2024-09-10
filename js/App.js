@@ -1,5 +1,7 @@
 import {completedListToggleShow} from "./CompletedItemDropButton.js";
 import { toggleModalVisibility } from "./ShowModal.js";
+import "./ToggleButtonBorder.js";
+import "./CheckFunction.js";
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const dropButton = document.getElementById("completed-item-drop-button");
@@ -11,7 +13,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const modalButton = document.getElementById("modal-button");
     modalButton.addEventListener("click", (event) => {
         toggleModalVisibility();
-        console.log("hi");
     });
 
     const listControlModal = document.getElementById("list-control-modal");

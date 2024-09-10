@@ -1,3 +1,16 @@
+<?php
+include "data-handling/db_conn.php";
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ./login.php');
+}
+
+$userId = $_SESSION['user_id'];
+$sql = "SELECT * FROM lists WHERE user_id = '$userId'";
+
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/index.css">
-    <script type="module" src="js/App.js"></script>
+    <script type="module" src="./js/App.js"></script>
     <link rel="icon" href="images/logo-icon.png">
     <title>CheckMate</title>
 </head>
@@ -14,8 +27,13 @@
         <div class="header-wrapper">
             <div class="header-top-wrapper">
                 <div class="username-wrapper">
-                    <span>Hello, Karl</span>
+                    <span><?php echo $_SESSION['user_name']; ?></span>
                 </div>
+                <form action="./data-handling/logout.php">
+                    <button class="logout-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#5f6368"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>
+                    </button>
+                </form>
                 <div class="logo-wrapper">
                     <img id="logo" src="images/logo-icon.png" alt="logo.png">
                 </div>
@@ -23,8 +41,15 @@
             <!-- <span>Lists</span> -->
             <div class="header-bot-wrapper">
                 <div class="lists-wrapper">
-                    <button id="id1">My List</button>
-                    <button id="2">My Other List</button>
+                    <?php 
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<button id="list-' . $row['id']. '" value="' . $row['id'] . '" data-list-name="' . $row['name'] . '">' . $row['name']. '</button>';
+                            }
+                        }
+                    ?>
+                    <!-- <button id="id1">My List</button> -->
+                    <!-- <button id="2">My Other List</button>
                     <button id="3">My List</button>
                     <button id="4">My List</button>
                     <button id="5">My List</button>        
@@ -32,8 +57,8 @@
                     <button id="7">My List</button>
                     <button id="8">My List</button>
                     <button id="9">My List</button>
-                    <button id="10">My List</button>
-                    <form action="new-list.html">
+                    <button id="10">My List</button> -->
+                    <form action="new-list.php">
                         <button id="add-new-list">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M453-454H220v-54h233v-233h54v233h233v54H507v233h-54v-233Z"/></svg>
                             <span>New List</span>
@@ -45,14 +70,17 @@
 
         <div id="list-control-modal" class="modal">
             <div class="modal-content">
-                <!-- <span class="close">&times;</span>
-                <p>This is the modal content.</p> -->
+                <div class="modal-option-wrapper">
+                    <a href="rename-list.php"><span>Rename list</span></a>
+                    <a href="delete-list.php"><span>Delete list</span></a>
+                </div>
             </div>
-        </div>   
+        </div>
         
 
         <div class="add-item-wrapper">
-            <form action="add-product.html">
+            <form action="add-product.php" method="GET">
+                <input type="hidden" name="list-id" id="list-id" value="">
                 <button id="add-item-button">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M427-428H168v-106h259v-259h106v259h259v106H533v259H427v-259Z"/></svg>
                 </button>
@@ -74,14 +102,27 @@
                     <div class="menu-list-inner-content">
                         <div class="main-list-content-header-wrapper">
                             <div class="main-list-content-header">
-                                <span>My List</span>
+                                <span id="list-name">My List</span>
                                 <button id="modal-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                 </button>
                             </div>
                         </div>
                         <div class="main-list-wrapper">
-                            <div class="menu-list">
+                            <?php
+                            $sql = "SELECT * FROM products";
+                            $result = $conn->query($sql);
+                            
+                            if($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
+                                    echo    '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'">';
+                                    echo    '<a id="link" href="edit-product.php?id='. $row['id'] .'">'. $row['name'] .'</a>';
+                                    echo '</div>';
+                                }
+                            }
+                            ?>
+                            <!-- <div class="menu-list">
                                 <input type="checkbox">
                                 <span>Sample List Item</span>
                             </div>
@@ -108,11 +149,7 @@
                             <div class="menu-list">
                                 <input type="checkbox">
                                 <span>Sample List Item</span>
-                            </div>
-                            <div class="menu-list">
-                                <input type="checkbox">
-                                <span>Sample List Item</span>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -121,7 +158,7 @@
                     <div class="completed-item-header-wrapper">
                         <div class="completed-item-header">
                             <div class="completed-item-header-left">
-                                <span>Completed</span>
+                                <span>Purchased</span>
                             </div>
                             <div class="completed-item-header-right">
                                 <button class="completed-item-drop-button" id="completed-item-drop-button">
@@ -144,5 +181,26 @@
             </div>
         </div>
     </div>
+    <script>
+        // function checkSession() {
+        //     const xhr = new XMLHttpRequest();
+        //     xhr.open("GET", "test.php");
+        //     xhr.onload = function() {
+        //         if (xhr.status === 200) {
+        //             const response = xhr.responseText;
+        //             if (response === "You are logged in.") {
+        //                 // User is logged in, do something
+        //             } else {
+        //                 window.location.href = "login.php";
+        //             }
+        //         } else {
+        //             console.error("Error checking session:", xhr.status);
+        //         }
+        //     };
+        //     xhr.send();
+        // }
+
+        // checkSession();
+    </script>
 </body>
 </html>

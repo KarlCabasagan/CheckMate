@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (isset($_SESSION['user_id'])) {
+    header('Location: ./index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +22,7 @@
         <div class="login-form-wrapper">
             <div id="error-message" style="color: red; display: none;"></div>
 
-            <form id="login-form" method="POST" action="/data-handling/login.php">
+            <form id="login-form" method="POST" action="./data-handling/login.php">
                 <div>
                     <span>Email</span>
                     <input type="email" name="email" id="email-input" required>
@@ -30,23 +36,24 @@
                 </div>
             </form>
             <div class="sign-up-wrapper">
-                <span id="sign-up">Don't have an account? <a href="register.html"> Sign up </a> now</span>
+                <span id="sign-up">Don't have an account? <a href="register.php"> Sign up </a> now</span>
             </div>
         </div>
     </div>
 
     <script>
-        // Display error message if passed via URL query
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+        function removeParameter(paramName) {
+            const url = new URL(window.location.href);
+            url.searchParams.delete(paramName);
+            window.location.href = url.toString();
         }
 
-        const errorMessage = getQueryParam('error');
-        if (errorMessage) {
-            const errorDiv = document.getElementById('error-message');
-            errorDiv.textContent = decodeURIComponent(errorMessage);
-            errorDiv.style.display = 'block';
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+
+        if (error) {
+            alert('Incorrect username or password');
+            removeParameter("error");
         }
     </script>
 </body>
