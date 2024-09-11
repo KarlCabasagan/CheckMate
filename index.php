@@ -108,16 +108,23 @@ $result = $conn->query($sql);
                                 </button>
                             </div>
                         </div>
-                        <div class="main-list-wrapper">
+                        <div class="main-list-wrapper" id="main-list-wrapper">
                             <?php
-                            $sql = "SELECT * FROM products";
+                            $sql = "SELECT * FROM products WHERE is_purchased = 0";
                             $result = $conn->query($sql);
                             
                             if($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
                                     echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
-                                    echo    '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'">';
-                                    echo    '<a id="link" href="edit-product.php?id='. $row['id'] .'">'. $row['name'] .'</a>';
+                                    echo    '<div>';
+                                    echo        '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
+                                    echo        '<a id="link" href="edit-product.php?id='. $row['id'] .'">'. $row['name'] .'</a>';
+                                    echo    '</div>';
+                                    echo    '<div class="delete-product-button-wrapper">';
+                                    echo        '<span id="delete-product-button" data-product-id="'. $row['id'] .'">';
+                                    echo            '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="red"><path d="M292.31-140q-29.92 0-51.12-21.19Q220-182.39 220-212.31V-720h-40v-60h180v-35.38h240V-780h180v60h-40v507.69Q740-182 719-161q-21 21-51.31 21H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46V-720ZM376.16-280h59.99v-360h-59.99v360Zm147.69 0h59.99v-360h-59.99v360ZM280-720v520-520Z"/></svg>';
+                                    echo        '</span>';
+                                    echo    '</div>';
                                     echo '</div>';
                                 }
                             }
@@ -168,13 +175,36 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                     <div class="completed-item-inner-wrapper" id="completed-item-inner-wrapper">
-                        <div class="completed-item">
-                            <input type="checkbox" checked>
-                            <span>Completeted Item Sample</span>
-                        </div>
-                        <div class="completed-item">
-                            <input type="checkbox" checked>
-                            <span>Completeted Item Sample</span>
+                        <?php
+                        $sql = "SELECT * FROM products WHERE is_purchased = 1";
+                        $result = $conn->query($sql);
+                        
+                        if($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
+                                echo    '<div>';
+                                echo        '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'" data-product-id="'. $row['id'] .'" checked>';
+                                echo        '<a id="link" href="edit-product.php?id='. $row['id'] .'">'. $row['name'] .'</a>';
+                                echo    '</div>';
+                                echo    '<div class="delete-product-button-wrapper">';
+                                echo        '<span id="delete-product-button" data-product-id="'. $row['id'] .'">';
+                                echo            '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="red"><path d="M292.31-140q-29.92 0-51.12-21.19Q220-182.39 220-212.31V-720h-40v-60h180v-35.38h240V-780h180v60h-40v507.69Q740-182 719-161q-21 21-51.31 21H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46V-720ZM376.16-280h59.99v-360h-59.99v360Zm147.69 0h59.99v-360h-59.99v360ZM280-720v520-520Z"/></svg>';
+                                echo        '</span>';
+                                echo    '</div>';
+                                echo '</div>';
+                            }
+                        }
+                        ?>
+                        <div class="menu-list">
+                            <div>
+                                <input type="checkbox" checked>
+                                <a href="">Completeted Item Sample</a>
+                            </div>
+                            <div>
+                                <span id="delete-product">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="red"><path d="M292.31-140q-29.92 0-51.12-21.19Q220-182.39 220-212.31V-720h-40v-60h180v-35.38h240V-780h180v60h-40v507.69Q740-182 719-161q-21 21-51.31 21H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46V-720ZM376.16-280h59.99v-360h-59.99v360Zm147.69 0h59.99v-360h-59.99v360ZM280-720v520-520Z"/></svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
