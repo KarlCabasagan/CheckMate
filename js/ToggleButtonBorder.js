@@ -1,6 +1,7 @@
 const buttons = document.querySelectorAll('.lists-wrapper button:not([form])'); // Select all buttons except inside forms
 const hiddenInput = document.getElementById('list-id');
 const listName = document.getElementById('list-name');
+let listId = null;
 
 function setActiveButton(button) {
     const allMenuList = document.querySelectorAll('.main-list-wrapper div');

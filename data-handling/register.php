@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 session_start();
                 $_SESSION['user_id'] = mysqli_insert_id($conn);
-                $_SESSION['username'] = $username;
+                $_SESSION['user_name'] = $username;
                 $myList = "My List";
                 $userId = $_SESSION['user_id'];
 

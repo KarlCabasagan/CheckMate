@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="container">
         <div class="header-wrapper">
             <div class="header-left-wrapper">
-                <div class="close-button-wrapper" onclick="history.back();">
+                <div class="close-button-wrapper" onclick="window.location.href = './index.php';">
                     <button id="close-button">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m252-176-74-76 227-228-227-230 74-76 229 230 227-230 74 76-227 230 227 228-74 76-227-230-229 230Z"/></svg>
                     </button>

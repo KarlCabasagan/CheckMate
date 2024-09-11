@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
        checkbox.addEventListener('change', (event) => {
             if (checkbox.checked) {
                 completedItemInnerWrapper.prepend(checkbox.parentElement.parentElement)
-                checkbox.parentElement.parentElement.remove;
+                // checkbox.parentElement.parentElement.remove;
                 const productId = checkbox.dataset.productId;
 
                 fetch(`/CheckMate/data-handling/check-item.php?product-id=${productId}`)
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             } else {
                 mainListWrapper.prepend(checkbox.parentElement.parentElement)
-                checkbox.parentElement.parentElement.remove;
+                // checkbox.parentElement.parentElement.remove;
                 const productId = checkbox.dataset.productId;
 
                 fetch(`/CheckMate/data-handling/uncheck-item.php?product-id=${productId}`)
