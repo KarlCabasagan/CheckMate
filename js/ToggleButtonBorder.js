@@ -4,7 +4,10 @@ const listName = document.getElementById('list-name');
 
 function setActiveButton(button) {
     const allMenuList = document.querySelectorAll('.main-list-wrapper div');
+    const allMenuListCompleted = document.querySelectorAll('.completed-item-inner-wrapper div');
+
     allMenuList.forEach(menuList => menuList.style.display = 'none');
+    allMenuListCompleted.forEach(menuListCompleted => menuListCompleted.style.display = 'none');
 
     buttons.forEach(btn => btn.style.borderBottom = 'none');
     button.style.borderBottom = 'solid #5cafe3 2px';
@@ -15,6 +18,7 @@ function setActiveButton(button) {
     const menuLists = document.getElementsByClassName('menu-list-' + button.value);
     for (let i = 0; i < menuLists.length; i++) {
         menuLists[i].style.display = "flex";
+        Array.from(menuLists[i].children).map(child => child.style.display = "flex");
     }
 }
 

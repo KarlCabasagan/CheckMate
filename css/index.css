@@ -193,18 +193,29 @@
 .main-list-wrapper div {
     display: none;
     align-items: center;
+    justify-content: space-between;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-bottom: 12px;
 
     >input {
         margin-right: 6px;
+    }
+    >span {
+        margin-right: 10px;
+        color: #737373;
+        font-weight: lighter;
     }
     >a {
         font-size: large;
         text-decoration: none;
         color: #444444;
     }
+}
+
+.delete-product-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -235,6 +246,10 @@
     align-items: center;
 }
 
+.completed-item-header-left span {
+    font-size: larger;
+}
+
 .completed-item-header-right .completed-item-drop-button {
     border: none;
     background-color: transparent;
@@ -247,31 +262,50 @@
 }
 
 .completed-item-inner-wrapper {
-    width: 90%;
+    width: 100%;
     height: 0px;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     overflow: hidden;
     transition: height 1s ease-in-out;
 }
 
-
-.completed-item {
-    display: flex;
-    justify-content: start;
+.completed-item-inner-wrapper div {
+    width: 90%;
+    display: none;
     align-items: center;
-    width: 100%;
-    padding: 10px;
-    padding-bottom: 15px;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    >div {
+        width: auto;
+    }
+    >input {
+        margin-right: 6px;
+    }
+    >span {
+        margin-right: 10px;
+        color: #737373;
+        font-weight: lighter;
+    }
+    >a {
+        font-size: large;
+        text-decoration: line-through;
+        color: #444444;
+    }
 }
 
-.completed-item span {
-    text-decoration: line-through;
-    margin-left: 6px;
-    max-width: 100%;
-    font-size: medium;
+
+.completed-item {
+    /* display: flex;
+    justify-content: start;
+    align-items: center; */
+    width: 100%;
+    /* padding: 10px;
+    margin-bottom: 5px; */
 }
 
 .completed-item-inner-wrapper.show {
