@@ -2,6 +2,7 @@ import {completedListToggleShow} from "./CompletedItemDropButton.js";
 import { toggleModalVisibility } from "./ShowModal.js";
 import "./ToggleButtonBorder.js";
 import "./CheckFunction.js";
+import "./DeleteItem.js";
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const dropButton = document.getElementById("completed-item-drop-button");
