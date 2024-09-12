@@ -1,6 +1,8 @@
 const buttons = document.querySelectorAll('.lists-wrapper button:not([form])'); // Select all buttons except inside forms
 const hiddenInput = document.getElementById('list-id');
 const listName = document.getElementById('list-name');
+const renameList = document.getElementById('rename-list');
+const deleteList = document.getElementById('delete-list');
 let listId = null;
 
 function setActiveButton(button) {
@@ -9,6 +11,8 @@ function setActiveButton(button) {
 
     allMenuList.forEach(menuList => menuList.style.display = 'none');
     allMenuListCompleted.forEach(menuListCompleted => menuListCompleted.style.display = 'none');
+
+    renameList.href = `rename-list.php?product-id=${button.value}`;
 
     buttons.forEach(btn => btn.style.borderBottom = 'none');
     button.style.borderBottom = 'solid #5cafe3 2px';

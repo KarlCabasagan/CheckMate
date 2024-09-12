@@ -71,8 +71,8 @@ $result = $conn->query($sql);
         <div id="list-control-modal" class="modal">
             <div class="modal-content">
                 <div class="modal-option-wrapper">
-                    <a href="rename-list.php"><span>Rename list</span></a>
-                    <a href="delete-list.php"><span>Delete list</span></a>
+                    <a id="rename-list" href="rename-list.php"><span>Rename list</span></a>
+                    <a id="delete-list" href="delete-list.php"><span>Delete list</span></a>
                 </div>
             </div>
         </div>
