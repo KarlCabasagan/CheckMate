@@ -38,7 +38,7 @@ if (!isset($_SESSION['user_id'])) {
             <form id="add-product-form" action="./data-handling/add-product.php" method="POST" enctype="multipart/form-data">
                 <div class="input-wrapper">
                     <input type="hidden" name="list-id" id="list-id">
-                    <input type="text" name="product-name" id="product-name" placeholder="Enter product name">
+                    <input type="text" name="product-name" id="product-name" placeholder="Enter product name" required>
                     <input type="text" name="product-brand" id="product-brand" placeholder="Brand">
                     <div class="price-quantity-wrapper">
                         <input type="number" name="product-price" id="product-price" placeholder="Price">

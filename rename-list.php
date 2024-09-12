@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <div class="name-input-wrapper">
                 <form id="rename-form" action="./data-handling/rename-list.php" method="POST">
                     <input type="hidden" name="list-id" id="list-id" value="<?php echo $listId?>">
-                    <input type="text" name="list-name" id="list-name" value="<?php echo $list_name ?>">
+                    <input type="text" name="list-name" id="list-name" value="<?php echo $list_name ?>" required>
                 </form>
             </div>
         </div>
@@ -59,7 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             const doneButton = document.getElementById('done-button');
 
             doneButton.addEventListener('click', (event) => {
-                document.getElementById('rename-form').submit();
+                inputData = document.getElementById("list-name").value;
+
+                if(inputData) {
+                    document.getElementById('rename-form').submit();                    
+                } else {
+                    const formWrapper = document.querySelector('.name-input-wrapper');
+                    formWrapper.style.border = "solid #ff3030 3px"
+                }
             });
         });
     </script>
