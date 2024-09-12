@@ -1,11 +1,26 @@
 .container {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 button {
     background-color: transparent;
     border: none;
+}
+
+input[type="text"] {
+    border: none;
+    background-color: transparent;
+    font-size: larger;
+    width: 100%;
+    color: #444444;
+}
+
+input[type="text"]:hover, input[type="text"]:not(:hover) {
+    outline: none;
 }
 
 .header-wrapper {
@@ -41,5 +56,25 @@ button {
 }
 
 .header-right-wrapper span {
-    font-size: large;
+    font-size: 20px;
+    font-weight: bold;
+    color: #5cafe2;
+}
+
+.list-name-wrapper {
+    width: 90%;
+}
+
+.name-input-wrapper {
+    width: 100%;
+    border-radius: 10px;
+    border: solid #1a414f 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+#rename-form {
+    width: 90%;
 }

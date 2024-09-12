@@ -12,7 +12,7 @@ function setActiveButton(button) {
     allMenuList.forEach(menuList => menuList.style.display = 'none');
     allMenuListCompleted.forEach(menuListCompleted => menuListCompleted.style.display = 'none');
 
-    renameList.href = `rename-list.php?product-id=${button.value}`;
+    renameList.href = `rename-list.php?list-id=${button.value}`;
 
     buttons.forEach(btn => btn.style.borderBottom = 'none');
     button.style.borderBottom = 'solid #5cafe3 2px';
