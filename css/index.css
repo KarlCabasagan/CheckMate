@@ -48,6 +48,10 @@
     align-items: center;
 }
 
+#username {
+    font-size: larger;
+}
+
 .logo-wrapper {
     position: absolute;
     left:50%;
@@ -374,6 +378,9 @@
     color: #444444;
     font-size: larger;
     /* font-weight: 600; */
+    >#delete-list-span {
+        color: red;
+    }
 }
 
 .modal.open {

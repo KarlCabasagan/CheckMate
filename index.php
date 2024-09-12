@@ -27,7 +27,7 @@ $result = $conn->query($sql);
         <div class="header-wrapper">
             <div class="header-top-wrapper">
                 <div class="username-wrapper">
-                    <span><?php echo $_SESSION['user_name']; ?></span>
+                    <span id="username"><?php echo $_SESSION['user_name']; ?></span>
                 </div>
                 <form action="./data-handling/logout.php">
                     <button class="logout-button">
@@ -44,7 +44,7 @@ $result = $conn->query($sql);
                     <?php 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                echo '<button id="list-' . $row['id']. '" value="' . $row['id'] . '" data-list-name="' . $row['name'] . '">' . $row['name']. '</button>';
+                                echo '<button id="list-' . $row['id']. '" value="' . $row['id'] . '" data-list-name="' . $row['name'] . '"><span id="list-name-span">' . $row['name']. '</span></button>';
                             }
                         }
                     ?>
@@ -72,7 +72,7 @@ $result = $conn->query($sql);
             <div class="modal-content">
                 <div class="modal-option-wrapper">
                     <a id="rename-list" href="rename-list.php"><span>Rename list</span></a>
-                    <a id="delete-list" href="delete-list.php"><span>Delete list</span></a>
+                    <a id="delete-list" href="delete-list.php"><span id="delete-list-span">Delete list</span></a>
                 </div>
             </div>
         </div>
