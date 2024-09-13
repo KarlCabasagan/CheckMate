@@ -65,6 +65,10 @@ input[type="text"]:hover, input[type="text"]:not(:hover) {
     width: 90%;
 }
 
+.list-name-inner-wrapper {
+    width: 100%;
+}
+
 .name-input-wrapper {
     width: 100%;
     border-radius: 10px;
@@ -78,4 +82,20 @@ input[type="text"]:hover, input[type="text"]:not(:hover) {
 
 #rename-form {
     width: 90%;
+}
+
+.error-message-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-left: 5px;
+    visibility: hidden;
+}
+
+.error-message-wrapper svg{
+    margin-right: 5px;
+}
+
+.error-message-wrapper span{
+    color: #ff3030;
 }
