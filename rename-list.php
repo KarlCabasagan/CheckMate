@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 <div class="name-input-wrapper">
                     <form id="rename-form" action="./data-handling/rename-list.php" method="POST">
                         <input type="hidden" name="list-id" id="list-id" value="<?php echo $listId?>">
-                        <input type="text" name="list-name" id="list-name" value="<?php echo $list_name ?>" required>
+                        <input type="text" name="list-name" id="list-name" value="<?php echo $list_name ?>" placeholder="Enter a name" required>
                     </form>
                 </div>
                 <div class="error-message-wrapper">

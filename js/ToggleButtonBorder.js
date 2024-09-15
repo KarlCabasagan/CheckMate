@@ -1,9 +1,8 @@
-const buttons = document.querySelectorAll('.lists-wrapper button:not([form])'); // Select all buttons except inside forms
+const buttons = document.querySelectorAll('.lists-wrapper button:not([form])');
 const hiddenInput = document.getElementById('list-id');
 const listName = document.getElementById('list-name');
 const renameList = document.getElementById('rename-list');
 const deleteList = document.getElementById('delete-list');
-let listId = null;
 
 function setActiveButton(button) {
     const allMenuList = document.querySelectorAll('.main-list-wrapper div');
@@ -25,8 +24,13 @@ function setActiveButton(button) {
         menuLists[i].style.display = "flex";
         Array.from(menuLists[i].children).map(child => child.style.display = "flex");
     }
+
+    const listId = button.value;
+
+    const purchasedCount = document.getElementById("purchased-count");
+    const products = document.querySelectorAll(`.completed-item-inner-wrapper .menu-list-${listId}`);
+
+    purchasedCount.textContent = `Checked (${products.length})`;
 }
 
 buttons.forEach(button => button.addEventListener('click', () => setActiveButton(button)));
-
-buttons[0].click();

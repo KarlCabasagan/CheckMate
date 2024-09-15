@@ -1,10 +1,14 @@
 import {completedListToggleShow} from "./CompletedItemDropButton.js";
 import { toggleModalVisibility } from "./ShowModal.js";
-import "./ToggleButtonBorder.js";
 import "./CheckFunction.js";
+import "./UpdatePurchasedCount.js";
 import "./DeleteItem.js";
+import "./ToggleButtonBorder.js";
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    const buttons = document.querySelectorAll('.lists-wrapper button:not([form])');
+    buttons[0].click();
+
     const dropButton = document.getElementById("completed-item-drop-button");
 
     dropButton.addEventListener("click", (event) => {

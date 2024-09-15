@@ -77,7 +77,7 @@ input[type="text"]:hover, input[type="text"]:not(:hover) {
     align-items: center;
     justify-content: center;
     height: 50px;
-    transition: ease-in-out 150ms;
+    /* transition: ease-in-out 150ms; */
 }
 
 #rename-form {

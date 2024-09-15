@@ -102,7 +102,7 @@ $result = $conn->query($sql);
                     <div class="menu-list-inner-content">
                         <div class="main-list-content-header-wrapper">
                             <div class="main-list-content-header">
-                                <span id="list-name">My List</span>
+                                <span id="list-name"></span>
                                 <button id="modal-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                                 </button>
@@ -117,7 +117,7 @@ $result = $conn->query($sql);
                                 while ($row = $result->fetch_assoc()) {
                                     echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
                                     echo    '<div>';
-                                    echo        '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
+                                    echo        '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'" data-product-id="'. $row['id'] .'" data-list-id="'. $row['list_id'] .'">';
                                     echo        '<a id="link" href="edit-product.php?id='. $row['id'] .'">'. $row['name'] .'</a>';
                                     echo    '</div>';
                                     echo    '<div class="delete-product-button-wrapper">';
@@ -160,12 +160,17 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                 </div>
+                
+                <?php
+                $sql = "SELECT * FROM products WHERE is_purchased = 1";
+                $result = $conn->query($sql);
+                ?>
 
                 <div class="completed-item-wrapper">
                     <div class="completed-item-header-wrapper">
                         <div class="completed-item-header">
                             <div class="completed-item-header-left">
-                                <span>Purchased</span>
+                                <span id="purchased-count">Checked (<?php echo "$result->num_rows"; ?>)</span>
                             </div>
                             <div class="completed-item-header-right">
                                 <button class="completed-item-drop-button" id="completed-item-drop-button">
@@ -176,14 +181,11 @@ $result = $conn->query($sql);
                     </div>
                     <div class="completed-item-inner-wrapper" id="completed-item-inner-wrapper">
                         <?php
-                        $sql = "SELECT * FROM products WHERE is_purchased = 1";
-                        $result = $conn->query($sql);
-                        
                         if($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
                                 echo    '<div>';
-                                echo        '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'" data-product-id="'. $row['id'] .'" checked>';
+                                echo        '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'" data-product-id="'. $row['id'] .'" data-list-id="'. $row['list_id'] .'" checked>';
                                 echo        '<a id="link" href="edit-product.php?id='. $row['id'] .'">'. $row['name'] .'</a>';
                                 echo    '</div>';
                                 echo    '<div class="delete-product-button-wrapper">';
@@ -195,7 +197,7 @@ $result = $conn->query($sql);
                             }
                         }
                         ?>
-                        <div class="menu-list">
+                        <!-- <div class="menu-list">
                             <div>
                                 <input type="checkbox" checked>
                                 <a href="">Completeted Item Sample</a>
@@ -205,7 +207,7 @@ $result = $conn->query($sql);
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="red"><path d="M292.31-140q-29.92 0-51.12-21.19Q220-182.39 220-212.31V-720h-40v-60h180v-35.38h240V-780h180v60h-40v507.69Q740-182 719-161q-21 21-51.31 21H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46V-720ZM376.16-280h59.99v-360h-59.99v360Zm147.69 0h59.99v-360h-59.99v360ZM280-720v520-520Z"/></svg>
                                 </span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
