@@ -115,7 +115,7 @@ $result = $conn->query($sql);
                             
                             if($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
-                                    echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
+                                    echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'" data-product-name="'. $row['name'] .'">';
                                     echo    '<div>';
                                     echo        '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'" data-product-id="'. $row['id'] .'" data-list-id="'. $row['list_id'] .'">';
                                     echo        '<a id="link" href="edit-product.php?id='. $row['id'] .'">'. $row['name'] .'</a>';
@@ -183,7 +183,7 @@ $result = $conn->query($sql);
                         <?php
                         if($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'">';
+                                echo '<div class="menu-list-'. $row['list_id'] .'" id="product-'. $row['id'] .'" data-product-id="'. $row['id'] .'" data-product-name="'. $row['name'] .'">';
                                 echo    '<div>';
                                 echo        '<input type="checkbox" class="product-checkbox" id="checkbox-'. $row['id'] .'" data-product-id="'. $row['id'] .'" data-list-id="'. $row['list_id'] .'" checked>';
                                 echo        '<a id="link" href="edit-product.php?id='. $row['id'] .'">'. $row['name'] .'</a>';
