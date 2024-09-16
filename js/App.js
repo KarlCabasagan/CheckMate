@@ -4,6 +4,7 @@ import "./CheckFunction.js";
 import "./UpdatePurchasedCount.js";
 import "./DeleteItem.js";
 import "./ToggleButtonBorder.js";
+import "./SearchFunction.js"
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const buttons = document.querySelectorAll('.lists-wrapper button:not([form])');
