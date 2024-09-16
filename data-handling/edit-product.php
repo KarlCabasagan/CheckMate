@@ -3,14 +3,15 @@ include "db_conn.php";
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $listId = $_POST["list-id"];
+    $productId = $_POST["product-id"];
+    $productOrigImage = $_POST["orig-image"];
     $productName = $_POST["product-name"];
-    $productBrand = $_POST["product-brand"];
     $productPrice = $_POST["product-price"];
-    $productQuantity = $_POST["product-quantity"];
+    $productQuantity = $_POST["quantity"];
     $productWeight = $_POST["product-weight"];
-    $productStore = $_POST["product-store"];
-    $productCategory = $_POST["product-category"];
+    $productCategory = $_POST["category-select"];
+    $productBrand = $_POST["brand-name"];
+    $productStore = $_POST["store-name"];
 
     if ($productQuantity < 1) {
         $productQuantity = 1;
@@ -18,8 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$productWeight) {
         $productWeight = "0 grams";
     }
-
-    var_dump($productWeight);
 
     function generateUniqueFilename($originalFilename) {
         $extension = pathinfo($originalFilename, PATHINFO_EXTENSION);
@@ -29,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (isset($_FILES["product-image"]) && $_FILES["product-image"]["error"] == 0) {
+        unlink(".$productOrigImage");
         $targetDir = "../images/products/";
         $originalFilename = basename($_FILES["product-image"]["name"]);
         $uniqueFilename = generateUniqueFilename($originalFilename);
@@ -45,10 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Invalid image file type.";
         }
     } else {
-        $imagePath = null;
+        $imagePath = $productOrigImage;
     }
 
-    $sql = "INSERT INTO products (list_id, name, brand, price, quantity, weight, store, category, image_url) VALUES ('$listId', '$productName', '$productBrand', '$productPrice', '$productQuantity', '$productWeight', '$productStore', '$productCategory', '$imagePath')";
+    $sql = "UPDATE products SET image_url = '$imagePath' ,name = '$productName', price = '$productPrice', quantity = '$productQuantity', weight = '$productWeight', category = '$productCategory', brand = '$productBrand', store = '$productStore' WHERE id = '$productId'";
 
     if ($conn->query($sql) === TRUE) {
         header('Location: ../index.php');
