@@ -5,12 +5,12 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $listId = $_POST["list-id"];
     $productName = $_POST["product-name"];
-    $productBrand = $_POST["product-brand"];
     $productPrice = $_POST["product-price"];
-    $productQuantity = $_POST["product-quantity"];
+    $productQuantity = $_POST["quantity"];
     $productWeight = $_POST["product-weight"];
-    $productStore = $_POST["product-store"];
-    $productCategory = $_POST["product-category"];
+    $productCategory = $_POST["category-select"];
+    $productBrand = $_POST["brand-name"];
+    $productStore = $_POST["store-name"];
 
     if ($productQuantity < 1) {
         $productQuantity = 1;
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $productWeight = "0 grams";
     }
 
-    var_dump($productWeight);
+    // echo $listId . $productName . $productPrice . $productQuantity . $productWeight . $productCategory . $productBrand . $productStore;
 
     function generateUniqueFilename($originalFilename) {
         $extension = pathinfo($originalFilename, PATHINFO_EXTENSION);

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     });
 
                 } else {
-                    mainListWrapper.prepend(checkbox.parentElement.parentElement)
+                    mainListWrapper.append(checkbox.parentElement.parentElement)
                     // checkbox.parentElement.parentElement.remove;
 
                     const products = document.querySelectorAll(`.completed-item-inner-wrapper .menu-list-${listId}`);
