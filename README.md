@@ -12,6 +12,8 @@
 
 **Mark Items as Purchased** : Check off items as you shop, making it easy to keep track of what you have bought.
 
+**Item Sorting** : Sort the items alphabetically (ascending or descending) by their name, or numerically by their unique identifier (ID).
+
 **Delete Items** : Remove items from your list with a single click.
 
 # Technologies Used
