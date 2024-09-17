@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2024 at 03:40 PM
+-- Generation Time: Sep 11, 2024 at 01:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,10 +46,10 @@ CREATE TABLE `products` (
   `name` varchar(50) NOT NULL,
   `brand` varchar(50) DEFAULT NULL,
   `price` int(12) DEFAULT NULL,
-  `weight` varchar(12) NOT NULL DEFAULT '0 gram',
-  `quantity` int(12) NOT NULL DEFAULT 1,
+  `weight` varchar(12) DEFAULT NULL,
+  `quantity` int(12) DEFAULT NULL,
   `store` varchar(50) DEFAULT NULL,
-  `category` varchar(50) DEFAULT NULL,
+  `category` int(50) DEFAULT NULL,
   `image_url` varchar(200) DEFAULT NULL,
   `is_purchased` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
@@ -101,19 +101,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `lists`
 --
 ALTER TABLE `lists`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

@@ -91,5 +91,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
         //     });
         // });
 
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const listItems = document.querySelectorAll(`.main-list-wrapper .menu-list-${listId}`);
+
+            listItems.forEach(listItem => {
+                if (listItem.children[0].style.display == 'none') {
+                    listItem.style.display = 'none';
+                }
+            });
+        });
+
     }));
 });

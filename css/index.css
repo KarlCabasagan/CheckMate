@@ -111,6 +111,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 .search-bar-wrapper form {
@@ -189,9 +190,21 @@
     font-size: larger;
 }
 
+.sort-modal-button-wrapper {
+    width: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sort-button * {
+    transition: fill 100ms ease-in-out;
+}
+
 .main-list-wrapper {
     width: 100%;
     margin-top: 5px;
+    padding-bottom: 15px;
 }
 
 .main-list-wrapper div {
@@ -274,6 +287,7 @@
     flex-direction: column;
     overflow: hidden;
     transition: height 1s ease-in-out;
+    padding-bottom: 10px;
 }
 
 .completed-item-inner-wrapper div {
@@ -330,8 +344,8 @@
 }
 
 #add-item-button {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     border: none;
     background-color: #1a414f;
     border-radius: 10px;
