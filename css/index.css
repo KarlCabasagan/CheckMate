@@ -287,6 +287,7 @@
     flex-direction: column;
     overflow: hidden;
     transition: height 1s ease-in-out;
+    padding-bottom: 10px;
 }
 
 .completed-item-inner-wrapper div {

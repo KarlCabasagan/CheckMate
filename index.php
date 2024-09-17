@@ -243,9 +243,9 @@ $result = $conn->query($sql);
         const sortButton = document.querySelector('#sort-button');
         const sortIcon = document.querySelector('#sort-icon');
 
-        let sortOrder = 1; // 1 for ascending, -1 for descending
+        let sortOrder = 1;
         let sortCounter = 0;
-        let originalOrder = Array.from(mainListWrapper.children); // Store original order
+        let originalOrder = Array.from(mainListWrapper.children);
 
         sortButton.addEventListener('click', () => {
             const childrenArray = Array.from(mainListWrapper.children);
@@ -253,7 +253,6 @@ $result = $conn->query($sql);
             if (sortCounter < 2) {
                 if (sortOrder === 1) {
                     sortIcon.style.fill = "#5cafe3";
-                    // Sort in ascending order
                     childrenArray.sort((a, b) => {
                     const productNameA = a.dataset.productName.toLowerCase();
                     const productNameB = b.dataset.productName.toLowerCase();
@@ -261,7 +260,6 @@ $result = $conn->query($sql);
                     });
                 } else if (sortOrder === -1) {
                     sortIcon.style.fill = "#705ce3";
-                    // Sort in descending order
                     childrenArray.sort((a, b) => {
                     const productNameA = a.dataset.productName.toLowerCase();
                     const productNameB = b.dataset.productName.toLowerCase();
@@ -270,12 +268,11 @@ $result = $conn->query($sql);
                 }
                 childrenArray.forEach(child => mainListWrapper.appendChild(child));
 
-                sortOrder *= -1; // Toggle sort order
+                sortOrder *= -1;
             }
             
             if (sortCounter >= 2) {
                 sortIcon.style.fill = "#5f6368";
-                // Reset to original order
                 childrenArray.forEach((child, index) => {
                 mainListWrapper.appendChild(originalOrder[index]);
                 });
