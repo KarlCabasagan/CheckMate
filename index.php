@@ -103,9 +103,14 @@ $result = $conn->query($sql);
                         <div class="main-list-content-header-wrapper">
                             <div class="main-list-content-header">
                                 <span id="list-name"></span>
-                                <button id="modal-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
-                                </button>
+                                <div class="sort-modal-button-wrapper">
+                                    <button id="sort-button">
+                                        <svg id="sort-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M320-440v-287L217-624l-57-56 200-200 200 200-57 56-103-103v287h-80ZM600-80 400-280l57-56 103 103v-287h80v287l103-103 57 56L600-80Z"/></svg>
+                                    </button>
+                                    <button id="modal-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div class="main-list-wrapper" id="main-list-wrapper">
@@ -233,6 +238,53 @@ $result = $conn->query($sql);
         // }
 
         // checkSession();
+
+        const mainListWrapper = document.querySelector('#main-list-wrapper');
+        const sortButton = document.querySelector('#sort-button');
+        const sortIcon = document.querySelector('#sort-icon');
+
+        let sortOrder = 1; // 1 for ascending, -1 for descending
+        let sortCounter = 0;
+        let originalOrder = Array.from(mainListWrapper.children); // Store original order
+
+        sortButton.addEventListener('click', () => {
+            const childrenArray = Array.from(mainListWrapper.children);
+
+            if (sortCounter < 2) {
+                if (sortOrder === 1) {
+                    sortIcon.style.fill = "#5cafe3";
+                    // Sort in ascending order
+                    childrenArray.sort((a, b) => {
+                    const productNameA = a.dataset.productName.toLowerCase();
+                    const productNameB = b.dataset.productName.toLowerCase();
+                    return sortOrder * productNameA.localeCompare(productNameB);
+                    });
+                } else if (sortOrder === -1) {
+                    sortIcon.style.fill = "#705ce3";
+                    // Sort in descending order
+                    childrenArray.sort((a, b) => {
+                    const productNameA = a.dataset.productName.toLowerCase();
+                    const productNameB = b.dataset.productName.toLowerCase();
+                    return sortOrder * productNameA.localeCompare(productNameB);
+                    });
+                }
+                childrenArray.forEach(child => mainListWrapper.appendChild(child));
+
+                sortOrder *= -1; // Toggle sort order
+            }
+            
+            if (sortCounter >= 2) {
+                sortIcon.style.fill = "#5f6368";
+                // Reset to original order
+                childrenArray.forEach((child, index) => {
+                mainListWrapper.appendChild(originalOrder[index]);
+                });
+                sortCounter = 0;
+            } else {
+                sortCounter += 1;
+            }
+            // console.log(sortCounter);
+        });
     </script>
 </body>
 </html>
